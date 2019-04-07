@@ -87,9 +87,13 @@ function getStudent() {
         alert("Login Successful!");
         for (var i = 0; i < customer.length ; i++) {
           var row = '<tr>' +
-            '<td>' + customer[i]._id + '</td>' +
             '<td>' + customer[i].student_ID + '</td>' +
             '<td>' + customer[i].firstName + '</td>' +
+            '<td>' + customer[i].lastName + '</td>' +
+            '<td>' + customer[i].facultry + '</td>' +
+            '<td>' + customer[i].major + '</td>' +
+            '<td>' + customer[i].tel + '</td>' +
+            '<td>' + customer[i].email + '</td>' +
             '<td>' +
             '<a class="add" title="Add" data-toggle="tooltip"onclick="editStudent()"><i class="material-icons">&#xE03B;</i></a>' +
             '<a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>' +
