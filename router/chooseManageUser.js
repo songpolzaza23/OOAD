@@ -58,6 +58,26 @@ app.post("/main/user/manageTeacher", (req, res) => {
     });
 })
 
+app.post("/main/user/updateStudents", (req, res) => {
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("ooad");
+        var query_ID = { student_ID : "59160069" }
+        var update = {
+            $set:
+            {
+                firstName : "teerawat"
+            }
+        }
+        // console.log(user)
+        dbo.collection("Students").updateOne(query_ID, update, function (err, result) {
+            if (err) return next(err);
+            console.log(result)
+           // res.send('Product udpated.');
+        });
+    });
+})
+
 app.post("/main/user/manageStaff", (req, res) => {
     console.log("OOHO")
     MongoClient.connect(url, function (err, db) {
