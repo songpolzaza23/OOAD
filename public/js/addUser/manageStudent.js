@@ -1,3 +1,5 @@
+var ar = []
+
 $(document).ready(function () {
   $('[data-toggle="tooltip"]').tooltip();
   var actions = $("table td:last-child").html();
@@ -31,7 +33,7 @@ $(document).ready(function () {
 
       $(this).parents("tr").find(".error").first().focus();
       if (!empty) {
-        var ar = []
+          ar = []
           input.each(function () {
               $(this).parent("td").html($(this).val());
               ar.push($(this).val())

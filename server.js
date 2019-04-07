@@ -3,7 +3,7 @@ const app = express()
 const bodyParser = require('body-parser')
 var login = require('./router/login')
 var addStudent = require('./router/chooseManageUser')
-var getStudent = require('./router/getStudent')
+var getStudent = require('./router/manageStudent')
 var path = require('path');
 
 app.use(express.static('public'));
