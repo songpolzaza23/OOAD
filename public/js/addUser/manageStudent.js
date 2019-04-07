@@ -20,10 +20,6 @@ $(document).ready(function () {
   $(document).on("click", ".add", function () {
       var empty = false;
       var input = $(this).parents("tr").find('input[type="text"]');
-      var name = $(this).parents("tr").find('input[name="name"]')
-      var id = $(this).parents("tr").find('input[name="factuly"]')
-      var pop = $(this).parents("tr").find('input[name="phone"]')
-      // console.log(name.val())
       input.each(function () {
           if (!$(this).val()) {
               $(this).addClass("error");
@@ -35,10 +31,13 @@ $(document).ready(function () {
 
       $(this).parents("tr").find(".error").first().focus();
       if (!empty) {
+        var ar = []
           input.each(function () {
               $(this).parent("td").html($(this).val());
-              console.log(name.val() + " " + id.val() + " " + pop.val())
+              ar.push($(this).val())
+              // console.log(name.val() + " " + id.val() + " " + pop.val())
           });
+          console.log(ar)
           $(this).parents("tr").find(".add, .edit").toggle();
           $(".add-new").removeAttr("disabled");
           // refreshPage()
