@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>จัดการข้อมูลนิสิต</title>
+    <title>จัดการการสอบ</title>
     <!-- Bootstrap core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -198,25 +198,25 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8">
-                                    <h2>จัดการข้อมูลนิสิต</h2>
+                                    <h2>จัดการการสอบ</h2>
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
-                                        New</button>
+                                        Exam</button>
                                 </div>
                             </div>
                         </div>
-                        <table class="table table-bordered" id="table">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>StudentID</th>
-                                    <th>ชื่อจริง</th>
-                                    <th>นามสกุล</th>
-                                    <th>คณะ</th>
-                                    <th>สาขา</th>
-                                    <th>เบอร์โทร</th>
-                                    <th>Email</th>
-                                    <th>action</th>
+                                    <th>Exam_ID</th>
+                                    <th>รายวิชา</th>
+                                    <th>วันสอบ</th>
+                                    <th>เวลาสอบ</th>
+                                    <th>จำนวนนิสิต</th>
+                                    <th>ห้องสอบ</th>
+                                    <th>ชื่อ-นามสกุลผู้คุมสอบ</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -237,6 +237,7 @@
                                                 class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>
+                               
                             </tbody>
                         </table>
                     </div>
