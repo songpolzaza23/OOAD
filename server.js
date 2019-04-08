@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 var login = require('./router/login')
 var addStudent = require('./router/chooseManageUser')
 var getStudent = require('./router/manageStudent')
+var manageTeacher = require('./router/manageTeacher')
 var manageTerm = require('./router/manageTerm')
 var path = require('path');
 
@@ -19,6 +20,7 @@ app.use(login)
 app.use(addStudent)
 app.use(getStudent)
 app.use(manageTerm)
+app.use(manageTeacher)
 
 app.listen(process.env.PORT || 8000, () => {
   console.log('Start server at port 8000.')
