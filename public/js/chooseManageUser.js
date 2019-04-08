@@ -15,7 +15,7 @@ function manageStudent(){
           console.log(customer);
           if (customer != "") {
             alert("Login Successful!");
-            window.location = "./../../main/user/addStudent.html?"+customer[0].username+" "+customer[0].type;
+            window.location = "./../../main/user/manageStudent.html?"+customer[0].username+" "+customer[0].type;
           } else {
             alert("Login Incorrect!");
           }
@@ -43,7 +43,7 @@ function manageTeacher(){
           console.log(customer);
           if (customer != "") {
             alert("Login Successful!");
-            window.location = "./../../main/user/addTeacher.html?"+customer[0].username+" "+customer[0].type;
+            window.location = "./../../main/user/manageTeacher.html?"+customer[0].username+" "+customer[0].type;
           } else {
             alert("Login Incorrect!");
           }
@@ -71,7 +71,7 @@ function manageStaff(){
           console.log(customer);
           if (customer != "") {
             alert("Login Successful!");
-            window.location = "./../../main/user/addStaff.html?"+customer[0].username+" "+customer[0].type;
+            window.location = "./../../main/user/manageStaff.html?"+customer[0].username+" "+customer[0].type;
           } else {
             alert("Login Incorrect!");
           }
