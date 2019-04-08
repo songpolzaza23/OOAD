@@ -21,6 +21,7 @@ app.use(login)
 app.use(addStudent)
 app.use(getStudent)
 app.use(manageTerm)
+app.use(getStaff)
 app.use(manageTeacher)
 
 app.use(getStaff)
