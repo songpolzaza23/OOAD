@@ -9,11 +9,10 @@ $(document).ready(function () {
     $(this).attr("disabled", "disabled");
     var index = $("table tbody tr:last-child").index();
     var row = '<tr>' +
-      '<td><input type="text" class="form-control" name="room_ID" id="room_ID"></td>' +
-      '<td><input type="text" class="form-control" name="build" id="build"></td>' +
-      '<td><input type="text" class="form-control" name="room" id="room"></td>' +
-      '<td><input type="text" class="form-control" name="examTime" id="examTime"></td>' +
-      '<td><input type="text" class="form-control" name="students" id="students"></td>' +
+      '<td><input type="text" class="form-control" name="subjectID" id="subjectID"></td>' +
+      '<td><input type="text" class="form-control" name="nameSubject" id="nameSubject"></td>' +
+      '<td><input type="text" class="form-control" name="numSuject" id="numSuject"></td>' +
+      '<td><input type="text" class="form-control" name="facultry" id="nameTeacher"></td>' +
       '<td>' + actions + '</td>' +
       '</tr>';
     $("table").append(row);
@@ -41,7 +40,7 @@ $(document).ready(function () {
         $(this).parent("td").html($(this).val());
         ar.push($(this).val())
       });
-      updateRoom()
+      updateSubject()
       console.log(ar)
       $(this).parents("tr").find(".add, .edit").toggle();
       $(".add-new").removeAttr("disabled");
@@ -73,12 +72,12 @@ $(document).ready(function () {
     console.log(keepData)
     if (keepData != ""){
       data = {
-        room_ID: keepData
+        subjectID: keepData
       }
       $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://localhost:8000/main/exam/deleteRoom",
+        url: "http://localhost:8000/main/subject/deleteSubject",
         data: JSON.stringify(data),
         dataType: "json",
         success: function (customer) {
@@ -105,11 +104,11 @@ function refreshPage() {
   window.location.reload();
 }
 
-function getRoom() {
+function getSubject() {
   $.ajax({
     type: "POST",
     contentType: "application/json",
-    url: "http://localhost:8000/main/exam/getRoom",
+    url: "http://localhost:8000/main/subject/getSubject",
     dataType: "json",
     success: function (customer) {
       // var result = JSON.stringify(customer);
@@ -118,15 +117,14 @@ function getRoom() {
         // alert("Login Successful!");
         for (var i = 0; i < customer.length; i++) {
           var row = '<tr>' +
-            '<td>' + customer[i].room_ID + '</td>' +
-            '<td>' + customer[i].build + '</td>' +
-            '<td>' + customer[i].room + '</td>' +
-            '<td>' + customer[i].examTime + '</td>' +
-            '<td>' + customer[i].students + '</td>' +
+            '<td>' + customer[i].subjectID + '</td>' +
+            '<td>' + customer[i].nameSubject + '</td>' +
+            '<td>' + customer[i].numSuject + '</td>' +
+            '<td>' + customer[i].nameTeacher + '</td>' +
             '<td>' +
             '<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>' +
             '<a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>' +
-            '<a class="delete" title="" data-toggle="tooltip" onclick="delRoom()"><i class="material-icons">&#xE872;</i></a>' +
+            '<a class="delete" title="" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>' +
             '</td>' +
             '</tr>';
           $("table").append(row);
@@ -142,20 +140,19 @@ function getRoom() {
 
 }
 
-function updateRoom() {
+function updateSubject() {
   data1 = {
-    room_ID: ar[0],
-    build: ar[1],
-    room: ar[2],
-    examTime: ar[3],
-    students: ar[4]
+    subjectID: ar[0],
+    nameSubject: ar[1],
+    numSuject: ar[2],
+    nameTeacher: ar[3],
   }
 
   console.log(data1)
   $.ajax({
     type: "POST",
     contentType: "application/json",
-    url: "http://localhost:8000/main/exam/updateRoom",
+    url: "http://localhost:8000/main/subject/updateSubject",
     data: JSON.stringify(data1),
     dataType: "json",
     success: function (customer) {

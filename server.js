@@ -8,6 +8,7 @@ var getStaff = require('./router/manageStaff')
 var manageTerm = require('./router/manageTerm')
 var manageTeacher = require('./router/manageTeacher')
 var manageRoom = require('./router/manageRoom')
+var manageSubject = require('./router/manageSubject')
 var path = require('path');
 
 app.use(express.static('public'));
@@ -25,6 +26,7 @@ app.use(manageTerm)
 app.use(getStaff)
 app.use(manageTeacher)
 app.use(manageRoom)
+app.use(manageSubject)
 
 app.use(getStaff)
 app.listen(process.env.PORT || 8000, () => {
