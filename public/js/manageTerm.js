@@ -1,5 +1,7 @@
-function updateTerm(e) {
-    e.preventDefault()
+function refreshPage() {
+    window.location.reload();
+  }
+function updateTerm() {
     var year = document.getElementById('year').value;
     var term = document.getElementById('term').value;
 
@@ -19,7 +21,9 @@ function updateTerm(e) {
             console.log(customer);
             if (customer != "") {
                 alert("Update Successful!");
-
+                var show = "ปีการศึกษา : " + customer.year + "เทอม : " + customer.term;
+                document.getElementById('TY').innerHTML = show; 
+               
             } else {
                 alert("Update Incorrect!");
             }

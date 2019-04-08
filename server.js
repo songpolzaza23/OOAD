@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(login)
 app.use(addStudent)
 app.use(getStudent)
-// app.use(manageTerm)
+app.use(manageTerm)
 
 app.listen(process.env.PORT || 8000, () => {
   console.log('Start server at port 8000.')
