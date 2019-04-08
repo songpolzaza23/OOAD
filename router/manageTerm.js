@@ -12,19 +12,14 @@ app.post("/main/user/updateTerm", (req, res) => {
         if (err) throw err;
         var dbo = db.db("ooad");
         var data = req.body
-        console.log(user)
         var newvalues = { $set: { year: data.year, term: data.term} };
-        dbo.collection("Students").updateOne({_id: "5cab05b23464043cbcb54484"}, newvalues, function (err, result) {
+        dbo.collection("manageYears").updateOne({}, newvalues, function (err, result) {
             if (err) {
                 res.sendStatus(404)
                 console.log(result)
             } else {
-                console.log(result)
-                if (result.length > 0) {
-                    res.send(result)
-                } else {
-                    res.send('false')
-                }
+                console.log(data)
+                res.send(data)
             }
         })
     });
