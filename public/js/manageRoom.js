@@ -73,12 +73,12 @@ $(document).ready(function () {
     console.log(keepData)
     if (keepData != ""){
       data = {
-        student_ID: keepData
+        room_ID: keepData
       }
       $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://localhost:8000/main/user/deleteRoom",
+        url: "http://localhost:8000/main/exam/deleteRoom",
         data: JSON.stringify(data),
         dataType: "json",
         success: function (customer) {
@@ -103,13 +103,13 @@ $(document).ready(function () {
 
 function refreshPage() {
   window.location.reload();
-}git 
+}
 
 function getRoom() {
   $.ajax({
     type: "POST",
     contentType: "application/json",
-    url: "http://localhost:8000/main/user/getRoom",
+    url: "http://localhost:8000/main/exam/getRoom",
     dataType: "json",
     success: function (customer) {
       // var result = JSON.stringify(customer);
@@ -155,7 +155,7 @@ function updateRoom() {
   $.ajax({
     type: "POST",
     contentType: "application/json",
-    url: "http://localhost:8000/main/user/updateRoom",
+    url: "http://localhost:8000/main/exam/updateRoom",
     data: JSON.stringify(data1),
     dataType: "json",
     success: function (customer) {

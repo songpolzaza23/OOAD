@@ -80,7 +80,7 @@ $(document).ready(function () {
       $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://localhost:8000/main/user/deleteStudent",
+        url: "http://localhost:8000/main/exam/deleteStudent",
         data: JSON.stringify(data),
         dataType: "json",
         success: function (customer) {
@@ -111,7 +111,7 @@ function getStudent() {
   $.ajax({
     type: "POST",
     contentType: "application/json",
-    url: "http://localhost:8000/main/user/getStudent",
+    url: "http://localhost:8000/main/exam/getStudent",
     dataType: "json",
     success: function (customer) {
       // var result = JSON.stringify(customer);
@@ -161,7 +161,7 @@ function updateStudents() {
   $.ajax({
     type: "POST",
     contentType: "application/json",
-    url: "http://localhost:8000/main/user/updateStudent",
+    url: "http://localhost:8000/main/exam/updateStudent",
     data: JSON.stringify(data1),
     dataType: "json",
     success: function (customer) {
