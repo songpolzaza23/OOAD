@@ -130,5 +130,57 @@ app.post("/main/user/manageTerm", (req, res) => {
     });
 })
 
+app.post("/main/user/manageExamMain", (req, res) => {
+    console.log("OOHO")
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("ooad");
+        var user = {
+            "username": req.body.username,
+            "type": req.body.type,
+        }
+        console.log(user)
+        dbo.collection("user").find(user).toArray(function(err, result) {
+            if (err) {
+                res.sendStatus(404)
+                console.log(result)
+            } else {
+                console.log(result)
+                if (result.length > 0) {
+                    res.send(result)
+                } else {
+                    res.send('false')
+                }
+            }
+        })
+    });
+})
+
+app.post("/main/user/manageRoom", (req, res) => {
+    console.log("OOHO")
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("ooad");
+        var user = {
+            "username": req.body.username,
+            "type": req.body.type,
+        }
+        console.log(user)
+        dbo.collection("user").find(user).toArray(function(err, result) {
+            if (err) {
+                res.sendStatus(404)
+                console.log(result)
+            } else {
+                console.log(result)
+                if (result.length > 0) {
+                    res.send(result)
+                } else {
+                    res.send('false')
+                }
+            }
+        })
+    });
+})
+
 
 module.exports = app;
