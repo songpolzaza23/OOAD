@@ -126,7 +126,7 @@ function getRoom() {
             '<td>' +
             '<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>' +
             '<a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>' +
-            '<a class="delete" title="" data-toggle="tooltip" onclick="delRoom(this)"><i class="material-icons">&#xE872;</i></a>' +
+            '<a class="delete" title="" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>' +
             '</td>' +
             '</tr>';
           $("table").append(row);

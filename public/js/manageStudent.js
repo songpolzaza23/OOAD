@@ -111,7 +111,7 @@ function getStudent() {
   $.ajax({
     type: "POST",
     contentType: "application/json",
-    url: "http://localhost:8000/main/exam/getStudent",
+    url: "http://localhost:8000/main/user/getStudent",
     dataType: "json",
     success: function (customer) {
       // var result = JSON.stringify(customer);
