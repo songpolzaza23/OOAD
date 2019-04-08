@@ -9,7 +9,6 @@
     <meta name="author" content="">
 
     <title>จัดการข้อมูลอาจารย์</title>
-
     <!-- Bootstrap core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,6 +20,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../js/addUser/manageTeacher.js"></script>
     <style type="text/css">
         body {
             color: #404E67;
@@ -33,7 +33,7 @@
             margin: 30px auto;
             background: #fff;
             padding: 30px;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: 0 1px 1px rgba(255, 0, 0, 0.05);
         }
 
         .table-title {
@@ -125,63 +125,9 @@
             display: none;
         }
     </style>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('[data-toggle="tooltip"]').tooltip();
-            var actions = $("table td:last-child").html();
-            // Append table with add row form on add new button click
-            $(".add-new").click(function () {
-                $(this).attr("disabled", "disabled");
-                var index = $("table tbody tr:last-child").index();
-                var row = '<tr>' +
-                    '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-                    '<td><input type="text" class="form-control" name="department" id="department"></td>' +
-                    '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
-                    '<td>' + actions + '</td>' +
-                    '</tr>';
-                $("table").append(row);
-                $("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
-                $('[data-toggle="tooltip"]').tooltip();
-            });
-            // Add row on add button click
-            $(document).on("click", ".add", function () {
-                var empty = false;
-                var input = $(this).parents("tr").find('input[type="text"]');
-                input.each(function () {
-                    if (!$(this).val()) {
-                        $(this).addClass("error");
-                        empty = true;
-                    } else {
-                        $(this).removeClass("error");
-                    }
-                });
-                $(this).parents("tr").find(".error").first().focus();
-                if (!empty) {
-                    input.each(function () {
-                        $(this).parent("td").html($(this).val());
-                    });
-                    $(this).parents("tr").find(".add, .edit").toggle();
-                    $(".add-new").removeAttr("disabled");
-                }
-            });
-            // Edit row on edit button click
-            $(document).on("click", ".edit", function () {
-                $(this).parents("tr").find("td:not(:last-child)").each(function () {
-                    $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-                });
-                $(this).parents("tr").find(".add, .edit").toggle();
-                $(".add-new").attr("disabled", "disabled");
-            });
-            // Delete row on delete button click
-            $(document).on("click", ".delete", function () {
-                $(this).parents("tr").remove();
-                $(".add-new").removeAttr("disabled");
-            });
-        });
-    </script>
 </head>
 
-<body>
+<body onload="getTeacher()">
 
     <div class="d-flex" id="wrapper">
 
@@ -194,6 +140,7 @@
                 <a href="#" class="list-group-item list-group-item-action bg-light">จัดการรายวิชา</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">ค้นหาห้องสอบ</a>
                 <a href="#" class="list-group-item list-group-item-action bg-light">ตรวจสอบผู้เข้าสอบ</a>
+                <a href="#" class="list-group-item list-group-item-action bg-light">จัดการปีการศึกษา</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -227,17 +174,17 @@
                         </li>
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                              aria-haspopup="true" aria-expanded="true">
-                              จัดการข้อมูลเจ้าหน้าที่ทั่วไป
+                                aria-haspopup="true" aria-expanded="true">
+                                จัดการข้อมูล
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">เพิ่มข้อมูลเจ้าหน้าที่ทั่วไป</a>
-                              <a class="dropdown-item" href="#">แก้ไขข้อมูลเจ้าหน้าที่ทั่วไป</a>
-                              <a class="dropdown-item" href="#">ลบข้อมูลเจ้าหน้าที่ทั่วไป</a>
-                              <div class="dropdown-divider"></div>
-                              <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="#">...</a>
+                                <a class="dropdown-item" href="#">...</a>
+                                <a class="dropdown-item" href="#">...</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">ออกจากระบบ</a>
                             </div>
-                          </li> -->
+                        </li> -->
 
                     </ul>
                 </div>
@@ -261,43 +208,25 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>ชื่อ-สกุล</th>
-                                    <th>คณะ/สาขา</th>
-                                    <th>โทรศัพท์</th>
-                                    <th>Actions</th>
+                                    <th>teacher_ID</th>
+                                    <th>ชื่อจริง</th>
+                                    <th>นามสกุล</th>
+                                    <th>คณะ</th>
+                                    <th>สาขา</th>
+                                    <th>เบอร์โทร</th>
+                                    <th>Email</th>
+                                    <th>action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>อาจาร์คนที่ ก</td>
-                                    <td>วิทยาการสารสนเทศ/วิทยาการคอมพิวเตอร์</td>
-                                    <td>0989898989</td>
-                                    <td>
-                                        <a class="add" title="Add" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE03B;</i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE254;</i></a>
-                                        <a class="delete" title="" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Peter Parker</td>
-                                    <td>Customer Service</td>
-                                    <td>(313) 555-5735</td>
-                                    <td>
-                                        <a class="add" title="Add" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE03B;</i></a>
-                                        <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE254;</i></a>
-                                        <a class="delete" title="" data-toggle="tooltip"><i
-                                                class="material-icons">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Fran Wilson</td>
-                                    <td>Human Resources</td>
-                                    <td>(503) 555-9931</td>
+                                <tr style="display: none">
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <a class="add" title="Add" data-toggle="tooltip"><i
                                                 class="material-icons">&#xE03B;</i></a>
