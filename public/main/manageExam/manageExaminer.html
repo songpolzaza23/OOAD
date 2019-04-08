@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>จัดการข้อมูลอาจารย์</title>
+    <title>จัดการผู้คุมสอบ</title>
     <!-- Bootstrap core CSS -->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../../js/manageTeacher.js"></script>
+    <!-- <script src="../../js/manageStudent.js"></script> -->
     <style type="text/css">
         body {
             color: #404E67;
@@ -128,7 +128,7 @@
 
 </head>
 
-<body onload="getTeacher()">
+<body onload="">
 
     <div class="d-flex" id="wrapper">
 
@@ -165,13 +165,16 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="manageStudent.html">จัดการข้อมูลนิสิต</a>
+                            <a class="nav-link" href="manageExam.html">จัดการการสอบ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="manageTeacher.html">จัดการข้อมูลอาจารย์</a>
+                            <a class="nav-link" href="manageRoom.html">จัดการห้องสอบ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="manageStaff.html">จัดการข้อมูลเจ้าหน้าที่ทั่วไป</a>
+                            <a class="nav-link" href="">จัดการที่นั่งสอบ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="manageExamMain.html">จัดการผู้คุมสอบ</a>
                         </li>
                         <!-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -198,31 +201,26 @@
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-8">
-                                    <h2>จัดการข้อมูลอาจารย์</h2>
+                                    <h2>จัดการผู้คุมสอบ</h2>
                                 </div>
                                 <div class="col-sm-4">
                                     <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add
-                                        New</button>
+                                        Exam</button>
                                 </div>
                             </div>
                         </div>
-                        <table class="table table-bordered" id="table">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>Teacher_ID</th>
-                                    <th>ชื่อจริง</th>
+                                    <th>Examiner_ID</th>
+                                    <th>ชื่อ</th>
                                     <th>นามสกุล</th>
-                                    <th>คณะ</th>
-                                    <th>สาขา</th>
-                                    <th>เบอร์โทร</th>
-                                    <th>Email</th>
-                                    <th>action</th>
+                                    <th>ห้องสอบ</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr style="display: none">
-                                    <td></td>
-                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -237,6 +235,7 @@
                                                 class="material-icons">&#xE872;</i></a>
                                     </td>
                                 </tr>
+
                             </tbody>
                         </table>
                     </div>
