@@ -45,7 +45,7 @@
       <div class="sidebar-heading">Exam schedule</div>
       <div class="list-group list-group-flush">
         <a href="index.html" class="list-group-item list-group-item-action bg-light">จัดการผู้ใช้</a>
-        <a href="roomstets.html" class="list-group-item list-group-item-action bg-light">จัดการการสอบ</a>
+        <a class="list-group-item list-group-item-action bg-light" onclick="manageExam()">จัดการการสอบ</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">จัดการรายวิชา</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">ค้นหาห้องสอบ</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">ตรวจสอบผู้เข้าสอบ</a>
@@ -71,7 +71,9 @@
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
 
-
+            <li class="nav-item">
+              <a class="nav-link" href="manageExam.html">จัดการการสอบ</a>
+          </li>
             <li class="nav-item">
               <a class="nav-link" onclick="manageRoom()">จัดการห้องสอบ</a>
             </li>
