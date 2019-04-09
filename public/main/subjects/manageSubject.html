@@ -21,6 +21,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="../../js/manageSubject.js"></script>
+    <script src="../../js/chooseManageUser.js"></script>
+    <script>
+        function setuser() {
+
+            var query = location.search.substring(1);
+            var dataText = query.split("%20")
+            $('#userText').text(dataText[0] + ": " + dataText[1])
+
+            username = dataText[0]
+            type = dataText[1]
+            getSubject()
+            console.log(dataText)
+
+        }
+    </script>
     <style type="text/css">
         body {
             color: #404E67;
@@ -128,7 +143,7 @@
 
 </head>
 
-<body onload="getSubject()">
+<body onload="setuser()">
 
     <div class="d-flex" id="wrapper">
 
@@ -136,11 +151,11 @@
         <div class="bg-light border-right" id="sidebar-wrapper">
             <div class="sidebar-heading">Exam schedule</div>
             <div class="list-group list-group-flush">
-                <a href="index.html" class="list-group-item list-group-item-action bg-light">จัดการผู้ใช้</a>
-                <a href="roomstets.html" class="list-group-item list-group-item-action bg-light">จัดการการสอบ</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">จัดการรายวิชา</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">ค้นหาห้องสอบ</a>
-                <a href="#" class="list-group-item list-group-item-action bg-light">ตรวจสอบผู้เข้าสอบ</a>
+                <a class="list-group-item list-group-item-action bg-light" onclick="manageUser()">จัดการผู้ใช้</a>
+                <a class="list-group-item list-group-item-action bg-light" onclick="manageExam()">จัดการการสอบ</a>
+                <a class="list-group-item list-group-item-action bg-light" onclick="manageSubject()">จัดการรายวิชา</a>
+                <a class="list-group-item list-group-item-action bg-light">ค้นหาห้องสอบ</a>
+                <a class="list-group-item list-group-item-action bg-light">ตรวจสอบผู้เข้าสอบ</a>
                 <a class="list-group-item list-group-item-action bg-light" onclick="manageTerm()">จัดการปีการศึกษา</a>
 
             </div>
