@@ -105,7 +105,7 @@ $(document).ready(function () {
 
 function refreshPage() {
   window.location.reload();
-}git 
+}
 
 function getTeacher() {
   $.ajax({
