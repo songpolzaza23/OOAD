@@ -1,5 +1,6 @@
 var ar = []
-
+var r;
+var keepData = ""
 $(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
     var actions = $("table td:last-child").html();
@@ -8,9 +9,12 @@ $(document).ready(function() {
         $(this).attr("disabled", "disabled");
         var index = $("table tbody tr:last-child").index();
         var row = '<tr>' +
-            '<td><input type="text" class="form-control" name="name" id="name"></td>' +
-            '<td><input type="text" class="form-control" name="factuly" id="factuly"></td>' +
-            '<td><input type="text" class="form-control" name="phone" id="phone"></td>' +
+            '<td><input type="text" class="form-control" name="staff_ID" id="staff_ID"></td>' +
+            '<td><input type="text" class="form-control" name="firstName" id="firstName"></td>' +
+            '<td><input type="text" class="form-control" name="lastName" id="lastName"></td>' +
+            '<td><input type="text" class="form-control" name="position" id="position"></td>' +
+            '<td><input type="text" class="form-control" name="tel" id="tel"></td>' +
+            '<td><input type="text" class="form-control" name="email" id="email"></td>' +
             '<td>' + actions + '</td>' +
             '</tr>';
         $("table").append(row);
@@ -37,13 +41,12 @@ $(document).ready(function() {
             input.each(function() {
                 $(this).parent("td").html($(this).val());
                 ar.push($(this).val())
-                    // console.log(name.val() + " " + id.val() + " " + pop.val())
             });
+            updateStaff()
             console.log(ar)
             $(this).parents("tr").find(".add, .edit").toggle();
             $(".add-new").removeAttr("disabled");
-            // refreshPage()
-            // getStudent()
+
         }
 
     });
@@ -58,26 +61,54 @@ $(document).ready(function() {
     // Delete row on delete button click
     $(document).on("click", ".delete", function() {
         //คอยเรียกใช้ function del
-        $(this).parents("tr").remove();
-        //
+
+        var x = document.getElementsByTagName("tr");
+        var table = document.getElementById('table'),
+            rIndex;
+        for (var i = 2; i < table.rows.length; i++) {
+            table.rows[i].onclick = function() {
+                rIndex = this.rowIndex;
+                r = rIndex
+                keepData = this.cells[0].innerHTML
+            }
+        }
+        console.log(keepData)
+        if (keepData != "") {
+            data = {
+                student_ID: keepData
+            }
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: "http://localhost:8000/main/user/deleteStaff",
+                data: JSON.stringify(data),
+                dataType: "json",
+                success: function(customer) {
+                    console.log(customer);
+                    if (customer != null) {
+                        alert("Delete Successful!");
+                        refreshPage()
+
+                    } else {
+                        alert("Delete Incorrect!");
+                    }
+                },
+                error: function(e) {
+                    console.log("ERROR: ", e);
+                }
+            });
+        }
         $(".add-new").removeAttr("disabled");
+
     });
 });
-
-function editStaff() {
-    //เอาไว้แก้
-}
 
 function refreshPage() {
     window.location.reload();
 }
-
-function addStaff() {
-
-}
+git
 
 function getStaff() {
-    alert("malaw")
     $.ajax({
         type: "POST",
         contentType: "application/json",
@@ -87,21 +118,19 @@ function getStaff() {
             // var result = JSON.stringify(customer);
             console.log(customer);
             if (customer != "") {
-                alert("Login Successful!");
+                // alert("Login Successful!");
                 for (var i = 0; i < customer.length; i++) {
                     var row = '<tr>' +
-                        '<td>' + customer[i].Staff_ID + '</td>' +
+                        '<td>' + customer[i].staff_ID + '</td>' +
                         '<td>' + customer[i].firstName + '</td>' +
                         '<td>' + customer[i].lastName + '</td>' +
                         '<td>' + customer[i].position + '</td>' +
-                        '<td>' + customer[i].under + '</td>' +
-                        '<td>' + customer[i].address + '</td>' +
                         '<td>' + customer[i].tel + '</td>' +
                         '<td>' + customer[i].email + '</td>' +
-                        '<td>' + customer[i].other + '</td>' +
-                        '<a class="add" title="Add" data-toggle="tooltip"onclick="editTeacher()"><i class="material-icons">&#xE03B;</i></a>' +
+                        '<td>' +
+                        '<a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>' +
                         '<a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>' +
-                        '<a class="delete" title="" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>' +
+                        '<a class="delete" title="" data-toggle="tooltip" onclick="delStaff(this)"><i class="material-icons">&#xE872;</i></a>' +
                         '</td>' +
                         '</tr>';
                     $("table").append(row);
@@ -118,11 +147,21 @@ function getStaff() {
 }
 
 function updateStaff() {
+    data1 = {
+        staff_ID: ar[0],
+        firstName: ar[1],
+        lastName: ar[2],
+        position: ar[3],
+        tel: ar[4],
+        email: ar[5]
+    }
 
+    console.log(data1)
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "http://localhost:8000/updateStaff",
+        url: "http://localhost:8000/main/user/updateStaff",
+        data: JSON.stringify(data1),
         dataType: "json",
         success: function(customer) {
             // var result = JSON.stringify(customer);
@@ -131,7 +170,7 @@ function updateStaff() {
                 alert("Update Successful!");
 
             } else {
-                alert("Update Incorrect!");
+                alert("Insert Successful!");
             }
         },
         error: function(e) {
