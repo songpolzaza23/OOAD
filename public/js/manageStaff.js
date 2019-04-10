@@ -75,7 +75,7 @@ $(document).ready(function() {
         console.log(keepData)
         if (keepData != "") {
             data = {
-                student_ID: keepData
+                staff_ID: keepData
             }
             $.ajax({
                 type: "POST",
