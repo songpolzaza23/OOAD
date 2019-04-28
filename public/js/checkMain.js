@@ -9,7 +9,7 @@ $(document).ready(function() {
         $(this).attr("disabled", "disabled");
         var index = $("table tbody tr:last-child").index();
         var row = '<tr>' +
-            '<td><input type="checkbox" name="query_myTextEditBox" style="text-align:center; vertical-align: middle;"> </td>' +
+            '<td><input type="checkbox" name="query_myTextEditBox" style="text-align:center; vertical-align: middle;"></td>' +
             '<td><input type="text" class="form-control" name="" id=""></td>' +
             '<td><input type="text" class="form-control" name="" id=""></td>' +
             '<td><input type="text" class="form-control" name="" id=""></td>' +
