@@ -3,83 +3,81 @@
 
 <head>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-  <title>จัดการผู้ใช้</title>
+    <title>จัดการผู้ใช้</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="../css/simple-sidebar.css" rel="stylesheet">
-  <script src="../js/chooseManageUser.js"></script>
-  <script>
+    <!-- Custom styles for this template -->
+    <link href="../css/simple-sidebar.css" rel="stylesheet">
+    <script src="../js/chooseManageUser.js"></script>
+    <script>
+        var username = ""
+        var type = ""
 
-    var username = ""
-    var type = ""
+        function setuser() {
 
-    function setuser() {
+            var query = location.search.substring(1);
+            var dataText = query.split("%20")
+            $('#userText').text(dataText[0] + ": " + dataText[1])
 
-      var query = location.search.substring(1);
-      var dataText = query.split("%20")
-      $('#userText').text(dataText[0] + ": " + dataText[1])
+            username = dataText[0]
+            type = dataText[1]
 
-      username = dataText[0]
-      type = dataText[1]
+            console.log(dataText)
 
-      console.log(dataText)
-
-    }
-  </script>
+        }
+    </script>
 </head>
 
 <body onload="setuser()">
 
-  <div class="d-flex" id="wrapper">
+    <div class="d-flex" id="wrapper">
 
-    <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Exam schedule</div>
-      <div class="list-group list-group-flush">
-        <a class="list-group-item list-group-item-action bg-light" onclick="manageUser()">จัดการผู้ใช้</a>
-        <a class="list-group-item list-group-item-action bg-light" onclick="manageExam()">จัดการการสอบ</a>
-        <a class="list-group-item list-group-item-action bg-light" onclick="manageSubject()">จัดการรายวิชา</a>
-        <a class="list-group-item list-group-item-action bg-light">ค้นหาห้องสอบ</a>
-        <a class="list-group-item list-group-item-action bg-light">ตรวจสอบผู้เข้าสอบ</a>
-        <a class="list-group-item list-group-item-action bg-light" onclick="manageTerm()">จัดการปีการศึกษา</a>
-      </div>
-    </div>
-    <!-- /#sidebar-wrapper -->
+        <!-- Sidebar -->
+        <div class="bg-light border-right" id="sidebar-wrapper">
+            <div class="sidebar-heading">Exam schedule</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action bg-light" onclick="manageUser()">จัดการผู้ใช้</a>
+                <a class="list-group-item list-group-item-action bg-light" onclick="manageExam()">จัดการการสอบ</a>
+                <a class="list-group-item list-group-item-action bg-light" onclick="manageSubject()">จัดการรายวิชา</a>
+                <a class="list-group-item list-group-item-action bg-light">ค้นหาห้องสอบ</a>
+                <a class="list-group-item list-group-item-action bg-light">ตรวจสอบผู้เข้าสอบ</a>
+                <a class="list-group-item list-group-item-action bg-light" onclick="manageTerm()">จัดการปีการศึกษา</a>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
 
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">Menu</button>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <button class="btn btn-primary" id="menu-toggle">Menu</button>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="manageStudent()">จัดการข้อมูลนิสิต</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="manageTeacher()">จัดการข้อมูลอาจารย์</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" onclick="manageStaff()">จัดการข้อมูลเจ้าหน้าที่ทั่วไป</a>
-            </li>
-            <!-- <li class="nav-item dropdown">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="manageStudent()">จัดการข้อมูลนิสิต</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="manageTeacher()">จัดการข้อมูลอาจารย์</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="manageStaff()">จัดการข้อมูลเจ้าหน้าที่ทั่วไป</a>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="true">
                 จัดการข้อมูลเจ้าหน้าที่ทั่วไป
@@ -93,31 +91,31 @@
               </div>
             </li> -->
 
-          </ul>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                <h1 class="mt-4">จัดการผู้ใช้</h1>
+
+            </div>
         </div>
-      </nav>
+        <!-- /#page-content-wrapper -->
 
-      <div class="container-fluid">
-        <h1 class="mt-4">จัดการผู้ใช้</h1>
-
-      </div>
     </div>
-    <!-- /#page-content-wrapper -->
+    <!-- /#wrapper -->
 
-  </div>
-  <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="../vendor/jquery/jquery.min.js"></script>
-  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function (e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 
 </body>
 
