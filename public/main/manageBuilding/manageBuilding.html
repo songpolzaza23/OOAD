@@ -31,7 +31,7 @@
 
             username = dataText[0]
             type = dataText[1]
-            getSubject()
+           
             console.log(dataText)
 
         }
@@ -143,7 +143,7 @@
 
 </head>
 
-<body >
+<body onload="setuser()">
 
     <div class="d-flex" id="wrapper">
 
@@ -157,7 +157,7 @@
                 <a class="list-group-item list-group-item-action bg-light">ค้นหาห้องสอบ</a>
                 <a class="list-group-item list-group-item-action bg-light">ตรวจสอบผู้เข้าสอบ</a>
                 <a class="list-group-item list-group-item-action bg-light" onclick="manageTerm()">จัดการปีการศึกษา</a>
-                <a class="list-group-item list-group-item-action bg-light" onclick="">จัดการตึก</a>
+                <a class="list-group-item list-group-item-action bg-light" onclick="manageBuilding()">จัดการตึก</a>
 
             </div>
         </div>

@@ -153,6 +153,33 @@ function manageExam() {
   });
 }
 
+function searchRoom() {
+  var data = {
+    username: username,
+    type: type
+  }
+  console.log("go to searchRoom")
+  $.ajax({
+    type: "POST",
+    contentType: "application/json",
+    url: "http://localhost:8000/main/login",
+    data: JSON.stringify(data),
+    dataType: "json",
+    success: function (res) {
+      console.log(res);
+      if (res != "") {
+        alert("now searchRoom page");
+        window.location = "./../../main/manageSearchRoom/searchRoom.html?" + res[0].username + " " + res[0].type;
+      } else {
+        alert("Login Incorrect!");
+      }
+    },
+    error: function (e) {
+      console.log("ERROR: ", e);
+    }
+  });
+}
+
 function manageRoom() {
   var data = {
     username: username,
@@ -227,6 +254,90 @@ function manageUser() {
       if (customer != "") {
         alert("Login Successful!");
         window.location = "./../../main/index.html?" + customer[0].username + " " + customer[0].type;
+      } else {
+        alert("Login Incorrect!");
+      }
+    },
+    error: function (e) {
+      console.log("ERROR: ", e);
+    }
+  });
+}
+
+  function manageCourse() {
+    var data = {
+      username: username,
+      type: type
+    }
+    console.log(data)
+    $.ajax({
+      type: "POST",
+      contentType: "application/json",
+      url: "http://localhost:8000/main/login",
+      data: JSON.stringify(data),
+      dataType: "json",
+      success: function (customer) {
+        // var result = JSON.stringify(customer);
+        console.log(customer);
+        if (customer != "") {
+          alert("Login Successful!");
+          window.location = "./../../main/manageCourse/manageCourse.html?" + customer[0].username + " " + customer[0].type;
+        } else {
+          alert("Login Incorrect!");
+        }
+      },
+      error: function (e) {
+        console.log("ERROR: ", e);
+      }
+    });
+}
+
+function manageBuilding() {
+  var data = {
+    username: username,
+    type: type
+  }
+  console.log(data)
+  $.ajax({
+    type: "POST",
+    contentType: "application/json",
+    url: "http://localhost:8000/main/login",
+    data: JSON.stringify(data),
+    dataType: "json",
+    success: function (customer) {
+      // var result = JSON.stringify(customer);
+      console.log(customer);
+      if (customer != "") {
+        alert("Login Successful!");
+        window.location = "./../../main/manageBuilding/manageBuilding.html?" + customer[0].username + " " + customer[0].type;
+      } else {
+        alert("Login Incorrect!");
+      }
+    },
+    error: function (e) {
+      console.log("ERROR: ", e);
+    }
+  });
+}
+
+function checkExamer() {
+  var data = {
+    username: username,
+    type: type
+  }
+  console.log(data)
+  $.ajax({
+    type: "POST",
+    contentType: "application/json",
+    url: "http://localhost:8000/main/login",
+    data: JSON.stringify(data),
+    dataType: "json",
+    success: function (customer) {
+      // var result = JSON.stringify(customer);
+      console.log(customer);
+      if (customer != "") {
+        alert("Login Successful!");
+        window.location = "./../../main/checkExamer/checkMain.html?" + customer[0].username + " " + customer[0].type;
       } else {
         alert("Login Incorrect!");
       }

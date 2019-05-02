@@ -23,6 +23,21 @@
     <script src="../../js/checkMain.js"></script>
     <script src="../../js/chooseManageUser.js"></script>
 
+    <script>
+        function setuser() {
+
+            var query = location.search.substring(1);
+            var dataText = query.split("%20")
+            $('#userText').text(dataText[0] + ": " + dataText[1])
+
+            username = dataText[0]
+            type = dataText[1]
+           
+            console.log(dataText)
+
+        }
+    </script>
+
     <style type="text/css">
         body {
             color: #404E67;
@@ -130,7 +145,7 @@
 
 </head>
 
-<body>
+<body onload="setuser()">
 
     <div class="d-flex" id="wrapper">
 

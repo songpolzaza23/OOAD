@@ -6,6 +6,32 @@ var MongoClient = mongodb.MongoClient;
 var url = "mongodb://admin:admin123@ds145669.mlab.com:45669/ooad";
 app.use(bodyParser.json());
 
+app.post("/main/login", (req, res) => {
+    console.log("login in router")
+    MongoClient.connect(url, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("ooad");
+        var user = {
+            "username": req.body.username,
+            "type": req.body.type,
+        }
+        console.log(user)
+        dbo.collection("user").find(user).toArray(function(err, result) {
+            if (err) {
+                res.sendStatus(404)
+                console.log(result)
+            } else {
+                console.log(result)
+                if (result.length > 0) {
+                    res.send(result)
+                } else {
+                    res.send('false')
+                }
+            }
+        })
+    });
+})
+
 app.post("/main/user/manageStudent", (req, res) => {
     console.log("manageStudent")
     MongoClient.connect(url, function (err, db) {
